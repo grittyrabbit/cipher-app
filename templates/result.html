@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ergebnisse</title>
+</head>
+<body>
+    <h1>Ergebnisse des Vokabeltests</h1>
+    <p>Sie haben {{ correct_answers }} von {{ total_questions }} Fragen richtig beantwortet.</p>
+
+    <h2>Details zu den Antworten:</h2>
+    <ul>
+        {% for result in results %}
+            <li>
+                <p><strong>Wort:</strong> "{{ result.word }}"</p>
+                <p><strong>Ihre Antwort:</strong> "{{ result.user_answer }}"</p>
+                <p><strong>Richtige Antwort:</strong> "{{ result.correct_answer }}"</p>
+                <p><strong>Ergebnis:</strong> {{ result.result }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('vocab') }}">Zurück zum Test</a>
+</body>
+</html>

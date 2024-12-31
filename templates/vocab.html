@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabeltest</title>
+</head>
+<body>
+    <h1>Vokabeltest</h1>
+    <p>{{ text }}</p>
+
+    <form method="POST" id="vocab-form">
+        {% for index, question in enumerate(questions) %}
+            <fieldset>
+                <legend>{{ question['question'] }}</legend>
+                {% for option in question['options'] %}
+                    <input type="radio" name="answer_{{ index }}" value="{{ option }}" required>
+                    <label>{{ option }}</label><br>
+                {% endfor %}
+            </fieldset>
+        {% endfor %}
+        <br>
+        <button type="submit">Abschicken</button>
+    </form>
+
+    <div id="result" style="display: none;">
+        <h2>Ergebnis:</h2>
+        <p>Du hast {{ score }} von {{ questions|length }} richtig!</p>
+    </div>
+
+    <script>
+        // Handle form submission and show results via JavaScript
+        const form = document.getElementById('vocab-form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Gather all selected answers into a JSON object
+            const formData = new FormData(form);
+            const answers = {};
+            formData.forEach((value, key) => {
+                answers[key] = value;
+            });
+
+            // Send the answers to the backend for scoring
+            fetch('/vocab', {
+                method: 'POST',
+                body: JSON.stringify(answers),
+                headers: {
+                    'Content-Type': 'application/json'  // Set the content type to application/json
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show the result
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('result').innerHTML = `
+                    <h2>Ergebnis:</h2>
+                    <p>Du hast ${data.score} von ${data.total} richtig!</p>
+                `;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

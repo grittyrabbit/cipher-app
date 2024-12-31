@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vokabelquiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .quiz-container {
+            margin-top: 20px;
+        }
+        .noun-item {
+            margin: 10px 0;
+        }
+        select {
+            padding: 5px;
+            width: 300px;
+            margin-left: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        p {
+            font-size: 18px;
+        }
+        .quiz-header {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Vokabelquiz</h1>
+
+    <p><strong>Text:</strong></p>
+    <p>{{ text }}</p>
+
+    <div class="quiz-container">
+        <h2 class="quiz-header">Quiz: Was bedeutet jedes dieser Wörter?</h2>
+
+        <form method="post" action="{{ url_for('quiz') }}">
+            {% for item in quiz_data %}
+                <div class="noun-item">
+                    <label for="{{ item.noun }}">{{ item.noun }}:</label>
+                    <select name="{{ item.noun }}" id="{{ item.noun }}" required>
+                        {% for option in item.options %}
+                            <option value="{{ option }}">{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            {% endfor %}
+            <input type="submit" value="Antworten absenden">
+        </form>
+    </div>
+
+</body>
+</html>

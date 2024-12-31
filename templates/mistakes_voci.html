@@ -1,0 +1,6 @@
+<h2>Your Mistakes</h2>
+<ul>
+    {% for mistake in mistakes %}
+        <li>{{ mistake['question']['question'] }} <strong>Your answer:</strong> {{ mistake['user_answer'] }} <strong>Correct answer:</strong> {{ mistake['question']['answer'] }}</li>
+    {% endfor %}
+</ul>

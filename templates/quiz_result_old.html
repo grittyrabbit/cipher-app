@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+</head>
+<body>
+    <h1>Quiz Results</h1>
+    <p>Your score: {{ score }} out of {{ total }}</p>
+    <p>
+        {% if score == total %}
+            Congratulations! You got everything right!
+        {% elif score >= total * 0.7 %}
+            Great job! You passed!
+        {% else %}
+            Keep practicing! You can do better next time!
+        {% endif %}
+    </p>
+    <a href="{{ url_for('home') }}">Go to Home</a>
+</body>
+</html>

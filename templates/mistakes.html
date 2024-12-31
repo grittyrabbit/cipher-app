@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mistakes</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Mistakes</h1>
+
+        <h3>Original German Text</h3>
+        <p>{{ german_text|safe }}</p>  <!-- Display the German text -->
+
+        <h3>Your Mistakes</h3>
+        {% if mistakes %}
+            <ul>
+                {% for mistake in mistakes %}
+                    <li>
+                        <strong>Blank:</strong> {{ mistake.blank }} <br>
+                        <strong>Your Answer:</strong> {{ mistake.user_answer }} <br>
+                        <strong>Correct Answer:</strong> {{ mistake.correct_answer }} <br>
+                        <hr>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No mistakes! Well done!</p>
+        {% endif %}
+
+        <a href="{{ url_for('grammarquiz') }}">Go Back to Quiz</a>
+    </div>
+</body>
+</html>

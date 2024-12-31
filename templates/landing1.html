@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <title>Hello! 😊 Just a few quick questions before we begin</title>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa; /* Light background */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+        }
+
+        .text-gradient {
+            color: #f6edff; /* White text color */
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        .btn-level {
+            background-color: white;
+            color: #d2d5af;
+            font-size: 1.2rem;
+            font-weight: 500;
+            padding: 15px 30px;
+            margin: 20px;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: none; /* Hidden initially */
+            opacity: 0;
+            transition: opacity 1s ease; /* Fade-in effect */
+        }
+
+        .btn-level:hover {
+            background-color: #d2d5af;
+            color: white;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .question {
+            color: #d2d5af;
+            font-size: 2rem;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 4px solid #d2d5af;
+            display: inline-block;
+            padding-right: 10px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div>
+            <h1 class="question" id="question"></h1>
+        </div>
+    </div>
+
+    <!-- Footer for the Proceed button -->
+    <div class="footer">
+        <button class="btn-level" id="proceedButton" onclick="window.location.href='/landing2'">Proceed</button>
+    </div>
+
+    <script>
+        // Function to simulate typing animation for the text
+        function typeText(elementId, text, i = 0) {
+            if (i < text.length) {
+                document.getElementById(elementId).innerHTML += text.charAt(i);
+                i++;
+                setTimeout(function() {
+                    typeText(elementId, text, i);
+                }, 100); // Speed of typing (in milliseconds)
+            } else {
+                // Show the "Proceed" button once typing is done with fade-in effect
+                const proceedButton = document.getElementById("proceedButton");
+                proceedButton.style.display = "inline-block";
+                setTimeout(function() {
+                    proceedButton.style.opacity = 1; // Make the button visible with a fade-in effect
+                }, 100);
+            }
+        }
+
+        // Start typing the "Hello!" text
+        window.onload = function() {
+            const welcomeText = "Hello! 😊 Just a few quick questions before we begin";
+            typeText("question", welcomeText);
+        };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
