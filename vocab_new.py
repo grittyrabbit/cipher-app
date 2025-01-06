@@ -6,8 +6,7 @@ from translatetogerman import translate_to_german
 from lists import common_nouns
 import re
 
-app = Flask(__name__)
- = 'randomsecretkeyforlara'
+
 
 # Load spaCy German model
 nlp = spacy.load("de_core_news_sm")
