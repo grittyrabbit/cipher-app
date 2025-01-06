@@ -3,7 +3,6 @@ from flask import Flask, render_template, request, redirect, url_for, make_respo
 import random
 import deepl
 app = Flask(__name__)
- = 'randomsecretkeyforlara'
 import subprocess
 from langdetect import detect, DetectorFactory
 DetectorFactory.seed = 0
