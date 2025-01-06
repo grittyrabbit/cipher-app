@@ -4,8 +4,6 @@ import deepl
 import random
 
 
-***REMOVED*** = '8ef68d0f-aeac-47b8-820a-9da50b71e2c1:fx'
-translator = deepl.Translator(***REMOVED***)
 
 levels = [
     "A1",
