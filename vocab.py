@@ -15,7 +15,6 @@ from main import generate_english_text
 nlp = spacy.load("de_core_news_sm")
 
 app = Flask(__name__)
- = 'randomsecretkey'
 import random
 import spacy
 from PyMultiDictionary import MultiDictionary
