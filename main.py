@@ -12,8 +12,7 @@ from lists import grammar_words, variations, topics, common_nouns
 # Set up Flask app
 app = Flask(__name__)
  = 'randomsecretkey'
-***REMOVED*** = 'c41e3483-1b4c-411f-ad34-e2063f3bfe1d'
-translator = deepl.Translator(***REMOVED***)
+
 
 # Load spacy model for German
 nlp = spacy.load("de_core_news_sm")
